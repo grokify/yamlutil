@@ -19,8 +19,8 @@ var getTests = []struct {
 	{[]string{"servers", "1", "description"}, 21680},
 }
 
-// TestDMYHM2ParseTime ensures timeutil.DateDMYHM2 is parsed to GMT timezone.
-func TestGet(t *testing.T) {
+// TestGetNodeJsonSchemaPath validates `GetNodeJsonSchemaPath()`.
+func TestGetNodeJsonSchemaPath(t *testing.T) {
 	testfile := "testdata/openapi3_spec.yaml"
 	topNode, err := ReadFile(testfile)
 	if err != nil {
