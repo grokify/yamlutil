@@ -10,6 +10,9 @@
 
 The `yamlutil` package provides a collection of Go utilities for YAML.
 
+1. The primary feature is the `GetNodeJsonSchemaPath()` function which returns a `*yaml.Node` for a pre-parsed JSON Schema pointer path. The primary use case is to get line numbers of linters using JSON Schema pointer to access a YAML file, e.g. OpenAPI specification files.
+1. A secondary feature is the `ReadFileAsJson()` function which will read a YAML file and convert it to JSON using `github.com/ghodss/yaml`.
+
 ## Installation
 
 ```bash
