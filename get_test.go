@@ -15,6 +15,8 @@ var getTests = []struct {
 	{[]string{"tags"}, 12},
 	{[]string{"tags", "1"}, 14},
 	{[]string{"components"}, 30},
+	{[]string{"components", "schemas", "CompanyCallLogRecord", "properties", "telephonySessionId", "description"}, 155},
+	{[]string{"paths", "/restapi/v1.0/account/{accountId}/extension/{extensionId}/call-log", "parameters", "2", "schema", "type"}, 21766},
 	{[]string{"servers"}, 21676},
 	{[]string{"servers", "1", "description"}, 21680},
 }
