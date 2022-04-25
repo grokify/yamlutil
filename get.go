@@ -17,14 +17,16 @@ const (
 	TagString   = "!!str"
 )
 
+/*
 func unshift(s []string) (string, []string) {
 	if len(s) > 0 {
 		return s[0], s[1:]
 	}
 	return "", []string{}
 }
+*/
 
-func logNode(node *yaml.Node, prefix string) {
+func LogNode(node *yaml.Node, prefix string) {
 	fmt.Printf("%s at LINE [%d] COL [%d] TAG [%s] VAL [%s]\n", prefix, node.Line, node.Column, node.Tag, node.Value)
 }
 

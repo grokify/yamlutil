@@ -21,8 +21,8 @@ var getTests = []struct {
 	{[]string{"servers", "1", "description"}, 21680},
 }
 
-// TestGetNodeJsonSchemaPath validates `GetNodeJsonSchemaPath()`.
-func TestGetNodeJsonSchemaPath(t *testing.T) {
+// TestGetNodeJSONSchemaPath validates `GetNodeJsonSchemaPath()`.
+func TestGetNodeJSONSchemaPath(t *testing.T) {
 	testfile := "testdata/openapi3_spec.yaml"
 	topNode, err := ReadFile(testfile)
 	if err != nil {
