@@ -22,10 +22,10 @@ func ReadFile(filename string) (*yaml.Node, error) {
 	return &node, err
 }
 
-// ReadFileAsJson reads a JSON or YAML file as JSON,
+// ReadFileAsJSON reads a JSON or YAML file as JSON,
 // converting YAML to JSON so it can be parsed using
 // JSON parsers.
-func ReadFileAsJson(filename string) ([]byte, error) {
+func ReadFileAsJSON(filename string) ([]byte, error) {
 	bytes, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err

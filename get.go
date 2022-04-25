@@ -28,7 +28,7 @@ func logNode(node *yaml.Node, prefix string) {
 	fmt.Printf("%s at LINE [%d] COL [%d] TAG [%s] VAL [%s]\n", prefix, node.Line, node.Column, node.Tag, node.Value)
 }
 
-func GetNodeJsonSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Node, error) {
+func GetNodeJSONSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Node, error) {
 	if node == nil {
 		return nil, errors.New("node cannot be nil")
 	} else if len(jsonSchemaPath) == 0 {
@@ -54,7 +54,7 @@ func GetNodeJsonSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 		if len(jsonSchemaPath) == 1 {
 			return node.Content[nodeValueInt], nil
 		}
-		return GetNodeJsonSchemaPath(
+		return GetNodeJSONSchemaPath(
 			node.Content[nodeValueInt],
 			jsonSchemaPath[1:]...)
 	}
@@ -67,7 +67,7 @@ func GetNodeJsonSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 					return childNode, nil
 				}
 				if idxChildNode < len(node.Content)-1 {
-					return GetNodeJsonSchemaPath(
+					return GetNodeJSONSchemaPath(
 						node.Content[idxChildNode+1],
 						jsonSchemaPath[1:]...)
 				}
@@ -88,7 +88,7 @@ func GetNodeJsonSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 						if idxGrandchildNode < len(childNode.Content)-1 {
 							// fmt.Printf("FINDING_SEARCH_PATH [%s]\n",
 							//	strings.Join(jsonSchemaPath[1:], "/"))
-							return GetNodeJsonSchemaPath(
+							return GetNodeJSONSchemaPath(
 								childNode.Content[idxGrandchildNode+1],
 								jsonSchemaPath[1:]...)
 						}
@@ -98,7 +98,6 @@ func GetNodeJsonSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 				}
 			}
 		}
-
 	}
 	return nil, fmt.Errorf("nodeName not found [%s]", strings.Join(jsonSchemaPath, ","))
 }

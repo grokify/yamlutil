@@ -31,13 +31,13 @@ func TestGetNodeJsonSchemaPath(t *testing.T) {
 	// topNodeThin := NodeToThin(topNode)
 	// fmtutil.PrintJSON(topNodeThin)
 	for _, tt := range getTests {
-		tryNode, err := GetNodeJsonSchemaPath(topNode, tt.path...)
+		tryNode, err := GetNodeJSONSchemaPath(topNode, tt.path...)
 		if err != nil {
-			t.Errorf("GetNodeJsonSchemaPath(\"%s\") Error: [%s]",
+			t.Errorf("error: GetNodeJSONSchemaPath(\"%s\") Error: [%s]",
 				strings.Join(tt.path, ","), err.Error())
 		}
 		if tryNode.Line != tt.line {
-			t.Errorf("GetNodeJsonSchemaPath(\"%s\") Want Line: [%d] Got Line [%d]",
+			t.Errorf("error: GetNodeJSONSchemaPath(\"%s\") Want Line: [%d] Got Line [%d]",
 				strings.Join(tt.path, ","), tt.line, tryNode.Line)
 		}
 	}
