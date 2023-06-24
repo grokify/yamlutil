@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"gopkg.in/yaml.v3"
+	yaml "gopkg.in/yaml.v3"
 )
 
 const (
@@ -24,11 +24,11 @@ func unshift(s []string) (string, []string) {
 	}
 	return "", []string{}
 }
-*/
 
-func LogNode(node *yaml.Node, prefix string) {
+func logNode(node *yaml.Node, prefix string) {
 	fmt.Printf("%s at LINE [%d] COL [%d] TAG [%s] VAL [%s]\n", prefix, node.Line, node.Column, node.Tag, node.Value)
 }
+*/
 
 func GetNodeJSONSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Node, error) {
 	if node == nil {
@@ -45,13 +45,17 @@ func GetNodeJSONSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 		return node, nil
 	}
 
+	if len(node.Value) > 0 && node.Value != curPathPart {
+		return nil, fmt.Errorf("mismatch path (%s) node (%s)", curPathPart, node.Value)
+	}
+
 	if node.Tag == TagSequence {
 		nodeValueInt, err := strconv.Atoi(curPathPart)
 		if err != nil {
 			panic(err)
 		}
 		if nodeValueInt < 0 || nodeValueInt >= len(node.Content) {
-			return nil, fmt.Errorf("sequence out of range idx [%d] len [%d]", nodeValueInt, len(node.Content))
+			return nil, fmt.Errorf("sequence out of range idx (%d) len (%d)", nodeValueInt, len(node.Content))
 		}
 		if len(jsonSchemaPath) == 1 {
 			return node.Content[nodeValueInt], nil
@@ -73,7 +77,7 @@ func GetNodeJSONSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 						node.Content[idxChildNode+1],
 						jsonSchemaPath[1:]...)
 				}
-				return nil, fmt.Errorf("no next part for [%s]",
+				return nil, fmt.Errorf("no next part for (%s)",
 					strings.Join(jsonSchemaPath[1:], "/"))
 			}
 		} else if childNode.Tag == TagMap {
@@ -100,6 +104,7 @@ func GetNodeJSONSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 				}
 			}
 		}
+
 	}
-	return nil, fmt.Errorf("nodeName not found [%s]", strings.Join(jsonSchemaPath, ","))
+	return nil, fmt.Errorf("nodeName not found (%s)", strings.Join(jsonSchemaPath, ","))
 }
