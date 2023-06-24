@@ -1,4 +1,4 @@
-package yamlplus
+package yamlutil
 
 import (
 	"strings"

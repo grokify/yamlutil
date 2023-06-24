@@ -1,4 +1,4 @@
-package yamlplus
+package yamlutil
 
 import (
 	"log"
@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	ghoyaml "github.com/ghodss/yaml"
-	"gopkg.in/yaml.v3"
+	yaml "gopkg.in/yaml.v3"
 )
 
 var rxYamlExtension = regexp.MustCompile(`(?i)\.ya?ml\s*$`)

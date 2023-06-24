@@ -1,4 +1,4 @@
-package yamlplus
+package yamlutil
 
 import (
 	"errors"
@@ -104,7 +104,6 @@ func GetNodeJSONSchemaPath(node *yaml.Node, jsonSchemaPath ...string) (*yaml.Nod
 				}
 			}
 		}
-
 	}
 	return nil, fmt.Errorf("nodeName not found (%s)", strings.Join(jsonSchemaPath, ","))
 }

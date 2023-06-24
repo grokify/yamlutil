@@ -1,6 +1,6 @@
-package yamlplus
+package yamlutil
 
-import "gopkg.in/yaml.v3"
+import yaml "gopkg.in/yaml.v3"
 
 type NodeThin struct {
 	Tag     string
