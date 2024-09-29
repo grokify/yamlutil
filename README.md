@@ -35,7 +35,7 @@ Please report issues and feature requests on [Github](https://github.com/grokify
 
  [used-by-svg]: https://sourcegraph.com/github.com/grokify/yamlutil/-/badge.svg
  [used-by-url]: https://sourcegraph.com/github.com/grokify/yamlutil?badge
- [build-status-svg]: https://github.com/grokify/yamlutil/workflows/go%20build/badge.svg?branch=master
+ [build-status-svg]: https://github.com/grokify/yamlutil/workflows/test/badge.svg?branch=master
  [build-status-url]: https://github.com/grokify/yamlutil/actions
  [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/yamlutil
  [goreport-url]: https://goreportcard.com/report/github.com/grokify/yamlutil
